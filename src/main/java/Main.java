@@ -19,7 +19,14 @@ public class Main {
 	    
 	    head = ex6(head, 20);
 	    System.out.println(head.getNext());
-	
+
+	    Node<Integer> lA = new Node<>(1, new Node<>(2, new Node<>(3, null)));
+        Node<Integer> lB = new Node<>(1, new Node<>(2, new Node<>(3, null)));
+
+        boolean areTheSame = ex8(lA, lB);
+        System.out.println(areTheSame);
+        
+        ex9(lA, lB);
 	}
 	
 	public static Node<Integer> buildList(int[] a) {
@@ -109,4 +116,26 @@ public class Main {
 		
 		return head;
 	}
+
+	public static boolean ex8(Node<Integer> headOfListA, Node<Integer> headOfListB) {
+		if (headOfListA == null && headOfListB == null)
+			return true;
+		
+		if (headOfListA.getValue() != headOfListB.getValue())
+			return false;
+		
+		if (!headOfListA.hasNext() || !headOfListB.hasNext())
+			return true;
+		
+		return ex8(headOfListA.getNext(), headOfListB.getNext());
+	}
+	
+	public static void ex9(Node<Integer> headOfListA, Node<Integer> headOfListB) {
+		if (headOfListA.getValue() == headOfListB.getValue())
+			System.out.println(headOfListA.getValue());
+		
+		if (headOfListA.hasNext() && headOfListB.hasNext())
+			ex9(headOfListA.getNext(), headOfListB.getNext());
+	}
+
 }
