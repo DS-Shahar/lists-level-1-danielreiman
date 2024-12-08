@@ -27,6 +27,11 @@ public class Main {
         System.out.println(areTheSame);
         
         ex9(lA, lB);
+
+	Node<Integer> l1 = new Node<>(1, new Node<>(2, new Node<>(3, null)));
+	Node<Integer> l2 = new Node<>(3, new Node<>(1, new Node<>(5, null)));
+
+	System.out.println(ex10(l1, l2));
 	}
 	
 	public static Node<Integer> buildList(int[] a) {
@@ -137,18 +142,29 @@ public class Main {
 		if (headOfListA.hasNext() && headOfListB.hasNext())
 			ex9(headOfListA.getNext(), headOfListB.getNext());
 	}
+	
 	public static Node<Integer> ex10(Node<Integer> l1, Node<Integer> l2) {
-		Node<Integer> head = new Node<>(-1);
-		Node<Integer> current = head;
-		
-		while (l1.getNext() != null) {
-			if (l1.getValue().equals(l2.getValue()) {
-				current.setNext(new Node<>(l1.getValue()));
+		Node<Integer> dummy = new Node<>(-1);
+		Node<Integer> head = dummy;
+
+		Node<Integer> c = l1;
+
+		while (c != null) {
+			
+			Node<Integer> c2 = l2;
+			while (c2 != null) {
+				if (c.getValue().equals(c2.getValue())) {
+					head.setNext(new Node<>(c2.getValue()));
+					
+					head = head.getNext();
+				}
+				
+				c2 = c2.getNext();
 			}
 			
-			current = current.getNext();
+			c = c.getNext();
 		}
-		
-		return head.getNext();
+			 
+		return dummy.getNext();
 	}
 }
