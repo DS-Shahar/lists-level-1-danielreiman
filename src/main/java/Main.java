@@ -121,13 +121,13 @@ public class Main {
 		if (headOfListA == null && headOfListB == null)
 			return true;
 		
-		if (headOfListA.getValue() != headOfListB.getValue())
-			return false;
+		if (headOfListA.getValue() == headOfListB.getValue())
+			return ex8(headOfListA.getNext(), headOfListB);
 		
 		if (!headOfListA.hasNext() || !headOfListB.hasNext())
 			return true;
 		
-		return ex8(headOfListA.getNext(), headOfListB.getNext());
+		return ex8(headOfListA, headOfListB.getNext());
 	}
 	
 	public static void ex9(Node<Integer> headOfListA, Node<Integer> headOfListB) {
