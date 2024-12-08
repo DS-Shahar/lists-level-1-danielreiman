@@ -137,5 +137,18 @@ public class Main {
 		if (headOfListA.hasNext() && headOfListB.hasNext())
 			ex9(headOfListA.getNext(), headOfListB.getNext());
 	}
-
+	public static Node<Integer> ex10(Node<Integer> l1, Node<Integer> l2) {
+		Node<Integer> head = new Node<>(-1);
+		Node<Integer> current = head;
+		
+		while (l1.getNext() != null) {
+			if (l1.getValue().equals(l2.getValue()) {
+				current.setNext(new Node<>(l1.getValue()));
+			}
+			
+			current = current.getNext();
+		}
+		
+		return head.getNext();
+	}
 }
