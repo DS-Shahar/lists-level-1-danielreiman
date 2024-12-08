@@ -32,6 +32,8 @@ public class Main {
 	Node<Integer> l2 = new Node<>(3, new Node<>(1, new Node<>(5, null)));
 
 	System.out.println(ex10(l1, l2));
+	System.out.println(ex11(l1, l2));
+
 	}
 	
 	public static Node<Integer> buildList(int[] a) {
@@ -167,4 +169,24 @@ public class Main {
 			 
 		return dummy.getNext();
 	}
+		  public static Node<Integer> ex11(Node<Integer> list1, Node<Integer> list2) {
+		    Node<Integer> p = new Node<>(0, list1);
+		    Node<Integer> first = p;
+		    while (p.hasNext()) {
+		      int num = p.getNext().getValue();
+		      if (isNumIn(list2, num))
+		        p.setNext(p.getNext().getNext());
+		      else 
+		        p = p.getNext();
+		    }
+		    return first.getNext();
+		  }
+	  
+	  public static boolean isNumIn(Node<Integer> p, int num) {
+		    if (p == null)
+		      return false;
+		    if (p.getValue() == num)
+		      return true;
+		    return isNumIn(p.getNext(), num);
+		  
 }
